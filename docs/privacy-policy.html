@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -14,11 +14,17 @@
         --rule: #e6e8eb;
         --code-bg: #f4f5f7;
       }
-      * { box-sizing: border-box; }
-      html, body { margin: 0; padding: 0; }
+      * {
+        box-sizing: border-box;
+      }
+      html,
       body {
-        font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-              "Helvetica Neue", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font: 16px/1.6 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          'Helvetica Neue', Arial, sans-serif;
         color: var(--fg);
         background: var(--bg);
         -webkit-font-smoothing: antialiased;
@@ -38,14 +44,39 @@
         margin: 32px 0 8px;
         letter-spacing: -0.01em;
       }
-      h3 { font-size: 16px; margin: 20px 0 6px; }
-      p, ul, ol { margin: 8px 0; }
-      ul, ol { padding-left: 22px; }
-      li { margin: 4px 0; }
-      hr { border: 0; border-top: 1px solid var(--rule); margin: 24px 0; }
-      .meta { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
-      a { color: var(--accent); text-decoration: none; }
-      a:hover { text-decoration: underline; }
+      h3 {
+        font-size: 16px;
+        margin: 20px 0 6px;
+      }
+      p,
+      ul,
+      ol {
+        margin: 8px 0;
+      }
+      ul,
+      ol {
+        padding-left: 22px;
+      }
+      li {
+        margin: 4px 0;
+      }
+      hr {
+        border: 0;
+        border-top: 1px solid var(--rule);
+        margin: 24px 0;
+      }
+      .meta {
+        color: var(--muted);
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
       code {
         background: var(--code-bg);
         padding: 1px 6px;
@@ -57,14 +88,18 @@
         border-collapse: collapse;
         margin: 12px 0;
       }
-      th, td {
+      th,
+      td {
         text-align: left;
         padding: 8px 10px;
         border-bottom: 1px solid var(--rule);
         vertical-align: top;
         font-size: 14px;
       }
-      th { color: var(--muted); font-weight: 600; }
+      th {
+        color: var(--muted);
+        font-weight: 600;
+      }
       .callout {
         background: var(--code-bg);
         border-left: 3px solid var(--accent);
@@ -100,18 +135,19 @@
         <strong>Short version:</strong> the app stores your meter readings,
         bills, and settings <em>only on your device</em>. We do not run any
         backend server, we do not collect or upload your data, we do not use
-        analytics, ads, or crash reporting, and we do not share data with
-        third parties. The app loads your electricity provider&rsquo;s
-        official bill page in an in&#8209;app browser so you can check your
-        bill &mdash; that page is governed by the provider&rsquo;s own
-        privacy policy, not this one.
+        analytics, ads, or crash reporting, and we do not share data with third
+        parties. The app loads your electricity provider&rsquo;s official bill
+        page in an in&#8209;app browser so you can check your bill &mdash; that
+        page is governed by the provider&rsquo;s own privacy policy, not this
+        one.
       </div>
 
       <h2>1. Who we are</h2>
       <p>
-        Meter Tracker PK is published by <strong>[YOUR_NAME]</strong>
-        (&ldquo;the developer&rdquo;). For privacy questions you can reach us
-        at <a href="mailto:[YOUR_EMAIL]">[YOUR_EMAIL]</a>.
+        Meter Tracker PK is published by
+        <strong>Amir Zubair Butt</strong> (&ldquo;the developer&rdquo;). For
+        privacy questions you can reach us at
+        <a href="mailto:amirzubairbutt@gmail.com">amirzubairbutt@gmail.com</a>.
       </p>
 
       <h2>2. Data the app stores on your device</h2>
@@ -119,16 +155,21 @@
         Everything you enter or import is saved locally in app&#8209;private
         storage on your phone (using MMKV and SQLite). It never leaves your
         device through the app. Uninstalling the app permanently deletes this
-        data unless you have separately backed it up via Android&rsquo;s
-        system backup.
+        data unless you have separately backed it up via Android&rsquo;s system
+        backup.
       </p>
       <table>
         <thead>
-          <tr><th>What is stored</th><th>Why</th></tr>
+          <tr>
+            <th>What is stored</th>
+            <th>Why</th>
+          </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Meter details you add (label, meter number, electricity provider)</td>
+            <td>
+              Meter details you add (label, meter number, electricity provider)
+            </td>
             <td>So the app can list and group your readings.</td>
           </tr>
           <tr>
@@ -137,7 +178,10 @@
           </tr>
           <tr>
             <td>Bills / consumer numbers you save</td>
-            <td>So the &ldquo;check bill&rdquo; flow can pre&#8209;fill the provider&rsquo;s page.</td>
+            <td>
+              So the &ldquo;check bill&rdquo; flow can pre&#8209;fill the
+              provider&rsquo;s page.
+            </td>
           </tr>
           <tr>
             <td>App preferences (theme, units, reminder times)</td>
@@ -150,7 +194,9 @@
       <ul>
         <li>No account, login, name, phone number, or address is requested.</li>
         <li>No advertising IDs or ad SDKs are present.</li>
-        <li>No analytics, telemetry, or crash&#8209;reporting service is used.</li>
+        <li>
+          No analytics, telemetry, or crash&#8209;reporting service is used.
+        </li>
         <li>No location is collected or tracked.</li>
         <li>No contacts, SMS, call logs, or microphone access is requested.</li>
       </ul>
@@ -158,15 +204,18 @@
       <h2>4. Permissions and why we ask for them</h2>
       <table>
         <thead>
-          <tr><th>Permission</th><th>How the app uses it</th></tr>
+          <tr>
+            <th>Permission</th>
+            <th>How the app uses it</th>
+          </tr>
         </thead>
         <tbody>
           <tr>
             <td><code>CAMERA</code></td>
             <td>
               Optional. Lets you photograph a meter so on&#8209;device OCR
-              (Google ML Kit Text Recognition) can read the digits. Photos
-              and recognised text are processed locally; nothing is uploaded.
+              (Google ML Kit Text Recognition) can read the digits. Photos and
+              recognised text are processed locally; nothing is uploaded.
             </td>
           </tr>
           <tr>
@@ -175,8 +224,8 @@
               <code>READ_EXTERNAL_STORAGE</code>
             </td>
             <td>
-              Optional. Lets you pick an existing meter photo from your
-              gallery for the same on&#8209;device OCR step.
+              Optional. Lets you pick an existing meter photo from your gallery
+              for the same on&#8209;device OCR step.
             </td>
           </tr>
           <tr>
@@ -192,8 +241,8 @@
             <td>
               Required so the in&#8209;app browser can load your electricity
               provider&rsquo;s official bill page (e.g. GEPCO, IESCO, LESCO,
-              MEPCO, FESCO, HESCO, PESCO, QESCO, K&#8209;Electric). The app
-              does not contact any server we operate &mdash; we do not run one.
+              MEPCO, FESCO, HESCO, PESCO, QESCO, K&#8209;Electric). The app does
+              not contact any server we operate &mdash; we do not run one.
             </td>
           </tr>
         </tbody>
@@ -202,14 +251,13 @@
       <h2>5. Third&#8209;party content (electricity provider websites)</h2>
       <p>
         The app embeds an Android <em>WebView</em> so you can open your
-        provider&rsquo;s official &ldquo;check bill&rdquo; page from inside
-        the app. When that page loads, the provider&rsquo;s servers will
-        receive whatever your phone&rsquo;s browser would normally send
-        (your IP address, browser user&#8209;agent, the consumer number you
-        type or paste, cookies the provider sets, etc.). That activity is
-        governed by <strong>the provider&rsquo;s own privacy policy</strong>,
-        not by this one. We do not log, intercept, or proxy any of that
-        traffic.
+        provider&rsquo;s official &ldquo;check bill&rdquo; page from inside the
+        app. When that page loads, the provider&rsquo;s servers will receive
+        whatever your phone&rsquo;s browser would normally send (your IP
+        address, browser user&#8209;agent, the consumer number you type or
+        paste, cookies the provider sets, etc.). That activity is governed by
+        <strong>the provider&rsquo;s own privacy policy</strong>, not by this
+        one. We do not log, intercept, or proxy any of that traffic.
       </p>
 
       <h2>6. Data sharing</h2>
@@ -221,43 +269,47 @@
       <h2>7. Children&rsquo;s privacy</h2>
       <p>
         The app is a general&#8209;audience utility and is not directed at
-        children under 13. We do not knowingly collect any data from
-        children. If a parent or guardian believes a child has shared
-        personal information through the app, please contact us &mdash;
-        because the app stores everything locally, simply uninstalling
-        the app erases that data.
+        children under 13. We do not knowingly collect any data from children.
+        If a parent or guardian believes a child has shared personal information
+        through the app, please contact us &mdash; because the app stores
+        everything locally, simply uninstalling the app erases that data.
       </p>
 
       <h2>8. Your choices and rights</h2>
       <ul>
         <li>
           <strong>Revoke a permission</strong> at any time:
-          <em>Android Settings &rarr; Apps &rarr; Meter Tracker PK &rarr; Permissions</em>.
+          <em
+            >Android Settings &rarr; Apps &rarr; Meter Tracker PK &rarr;
+            Permissions</em
+          >.
         </li>
         <li>
           <strong>Delete your data</strong> by clearing the app&rsquo;s storage
-          (<em>Settings &rarr; Apps &rarr; Meter Tracker PK &rarr; Storage &amp; cache &rarr; Clear storage</em>)
-          or by uninstalling the app.
+          (<em
+            >Settings &rarr; Apps &rarr; Meter Tracker PK &rarr; Storage &amp;
+            cache &rarr; Clear storage</em
+          >) or by uninstalling the app.
         </li>
         <li>
-          <strong>Export your data</strong> from inside the app (the share
-          / export features write a file to a folder you choose).
+          <strong>Export your data</strong> from inside the app (the share /
+          export features write a file to a folder you choose).
         </li>
       </ul>
       <p>
         Because we do not hold any of your data on our servers, requests for
-        access, correction, deletion, or portability under laws such as
-        GDPR, CCPA, or Pakistan&rsquo;s Personal Data Protection Bill are
-        satisfied entirely by the on&#8209;device controls listed above.
+        access, correction, deletion, or portability under laws such as GDPR,
+        CCPA, or Pakistan&rsquo;s Personal Data Protection Bill are satisfied
+        entirely by the on&#8209;device controls listed above.
       </p>
 
       <h2>9. Security</h2>
       <p>
-        App data is stored in app&#8209;private storage that other apps on
-        your device cannot read. Sensitive screens (where applicable) avoid
-        rendering data to system screenshots. Because data never leaves the
-        device, no transport encryption is required for our own
-        infrastructure (we have none).
+        App data is stored in app&#8209;private storage that other apps on your
+        device cannot read. Sensitive screens (where applicable) avoid rendering
+        data to system screenshots. Because data never leaves the device, no
+        transport encryption is required for our own infrastructure (we have
+        none).
       </p>
 
       <h2>10. Changes to this policy</h2>
@@ -270,15 +322,16 @@
       <h2>11. Contact</h2>
       <p>
         Questions, concerns, or requests:
-        <a href="mailto:[YOUR_EMAIL]">[YOUR_EMAIL]</a>.
+        <a href="mailto:amirzubairbutt@gmail.com">AMIRZUBAIRBUTT@GMAIL.COM</a>.
       </p>
 
       <footer>
-        &copy; <span id="year">2026</span> [YOUR_NAME]. All rights reserved.
+        &copy; <span id="year">2026</span> AMIR ZUBAIR BUTT. All rights
+        reserved.
       </footer>
     </main>
     <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
+      document.getElementById('year').textContent = new Date().getFullYear();
     </script>
   </body>
 </html>
