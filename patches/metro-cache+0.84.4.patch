@@ -1,0 +1,45 @@
+diff --git a/node_modules/metro-cache/src/stores/FileStore.js b/node_modules/metro-cache/src/stores/FileStore.js
+index f3db2a0..22960ec 100644
+--- a/node_modules/metro-cache/src/stores/FileStore.js
++++ b/node_modules/metro-cache/src/stores/FileStore.js
+@@ -65,14 +65,35 @@ class FileStore {
+     );
+   }
+   #removeDirs() {
++    // Windows transient errors that surface when antivirus / Search Indexer /
++    // another node worker briefly holds a handle in the cache bucket.
++    // A failed cache wipe is non-fatal: Metro will just rebuild the bucket on
++    // the next write. Failing here would tank the whole release bundle build.
++    const TRANSIENT = new Set([
++      "ENOTEMPTY",
++      "EPERM",
++      "EBUSY",
++      "EACCES",
++      "EMFILE",
++    ]);
+     for (let i = 0; i < 256; i++) {
+-      _fs.default.rmSync(
+-        _path.default.join(this.#root, ("0" + i.toString(16)).slice(-2)),
+-        {
++      const bucket = _path.default.join(
++        this.#root,
++        ("0" + i.toString(16)).slice(-2),
++      );
++      try {
++        _fs.default.rmSync(bucket, {
+           force: true,
+           recursive: true,
+-        },
+-      );
++          maxRetries: 20,
++          retryDelay: 100,
++        });
++      } catch (err) {
++        if (err && TRANSIENT.has(err.code)) {
++          continue;
++        }
++        throw err;
++      }
+     }
+   }
+ }

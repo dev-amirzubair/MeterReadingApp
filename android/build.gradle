@@ -1,0 +1,35 @@
+buildscript {
+    ext {
+        buildToolsVersion = "36.0.0"
+        minSdkVersion = 24
+        compileSdkVersion = 36
+        targetSdkVersion = 36
+        ndkVersion = "27.1.12297006"
+        kotlinVersion = "2.1.20"
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle")
+        classpath("com.facebook.react:react-native-gradle-plugin")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+    }
+}
+
+// Force every Android subproject (including third-party RN modules like
+// op-sqlite, notifee, etc.) to use the same NDK version as the root project.
+// AGP 8.7+ defaults to NDK 27.0.12077973 when a module doesn't pin one — that
+// mismatch would otherwise trigger a second multi-GB SDK download mid-build.
+// Must be registered BEFORE apply plugin: "com.facebook.react.rootproject"
+// because that plugin triggers project evaluation.
+subprojects {
+    afterEvaluate {
+        if (project.extensions.findByName("android") != null) {
+            project.android.ndkVersion = rootProject.ext.ndkVersion
+        }
+    }
+}
+
+apply plugin: "com.facebook.react.rootproject"

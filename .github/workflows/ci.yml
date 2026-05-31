@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+# Cancel in-progress runs for the same branch when a new commit lands.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: lint + tsc + jest
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: ['22.11']
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: Install dependencies
+        # The project uses several packages with strict peer-dep ranges
+        # (notifee, op-sqlite, etc.) so npm ci needs --legacy-peer-deps to
+        # match local installs.
+        run: npm ci --legacy-peer-deps
+
+      - name: Stub .env for tests
+        # Tests don't actually read .env (the babel plugin is disabled in
+        # test mode and `__mocks__/env.js` takes over), but Metro's babel
+        # config still inspects the file path on load. An empty file is
+        # enough to keep things quiet on a fresh clone.
+        run: cp .env.example .env
+
+      - name: Lint
+        run: npm run lint
+
+      - name: TypeScript
+        run: npx tsc --noEmit
+
+      - name: Test
+        run: npm test -- --ci --reporters=default --runInBand
