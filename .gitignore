@@ -78,6 +78,9 @@ yarn-error.log
 .env
 .env.local
 
+# Debug / scratch output (Metro bundle dumps, gradle logs, scratch reports)
+tmp/
+
 *.aab
 *.apk
 *.aar
