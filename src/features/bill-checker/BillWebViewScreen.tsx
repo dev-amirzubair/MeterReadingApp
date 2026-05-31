@@ -332,7 +332,7 @@ const styles = StyleSheet.create({
   copyBtnText: { color: '#fff', fontWeight: '800', fontSize: 13 },
 
   loaderOverlay: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     justifyContent: 'center',
     alignItems: 'center',
   },
